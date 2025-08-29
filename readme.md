@@ -32,3 +32,6 @@ Our server uses **sbatch** to manage job submission.
 A script `run.sh` is already created to show how to submit a job and run the python code "example.py".
 Then, in the command line, enter ` sbatch run.sh ` and the job will be submitted. You will see the output created in your current directory. 
 To supervise the condition of GPUs, you can also do ` sbatch gpu.sh `.
+
+### Note
+The core usage of `sbatch` within the `run.sh` script is to allocate computational resources. It's better to first check whether there are enough resources before any job submission.

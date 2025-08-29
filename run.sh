@@ -3,6 +3,7 @@
 #SBATCH --partition=gpuq      # where our GPUs are installed.
 #SBATCH --nodes=1                   
 #SBATCH --ntasks-per-node=1 
+##SBATCH --gres=gpu:1.        # This command seems to be refused by our server.
 #SBATCH --cpus-per-task=1
 # /!\ Caution, "multithread" in Slurm vocabulary refers to hyperthreading.
 #SBATCH --hint=nomultithread         # hyperthreading is deactivated
