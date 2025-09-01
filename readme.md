@@ -25,13 +25,13 @@ To install packages for a specific environment you have created, first enter `co
 ## Run Code with GPU
 
 ### Preliminary
-When you connect to the server "titi", you should be on the "login" node. Generally, it's not recommended to run code on "login" node (although there's a 60-core cpu). Instead, you can submit a job from "login" node to a calculation partition. By entering ` sinfo ` in the command line, you can see there's a partition named ` gpuq `. That's the partition where our GPUs are installed.
+When you connect to the server "titi", you should be on the "login" node. Generally, it's not recommended to run code on "login" node (although there's a 60-core cpu). Instead, you can submit a job from "login" node to a calculation node. By entering ` sinfo ` in the command line, you can see there's a partition named ` gpuq `. That's the partition where our 4 GPUs are installed. More specifically, there are 2 nodes named `gpu101` and `gpu102` on this `gpuq` partition, each of them has 2 gpus. Generally, it's enough to run on one single node.
 
 ### Submit a Job
 Our server uses **sbatch** to manage job submission.
 A script `run.sh` is already created to show how to submit a job and run the python code "example.py".
 Then, in the command line, enter ` sbatch run.sh ` and the job will be submitted. You will see the output created in your current directory. 
-To supervise the condition of GPUs, you can also do ` sbatch gpu.sh `.
+To supervise the condition of GPUs, you can also do ` sbatch gpu.sh ` (also created as an example).
 
 ### Note
-The core usage of `sbatch` within the `run.sh` script is to allocate computational resources. It's better to first check whether there are enough resources before any job submission.
+The core usage of `sbatch` within the `run.sh` script is to allocate computational resources. It's better to first check whether there are enough resources before any job submission. For example, the server would assign you a node automatically. But if you find that gpu101 node is busy, then you can switch to gpu102 node manually by using `#SBATCH --nodelist=gpu102` in the script (just uncomment the corresponding line in `run.sh`).
