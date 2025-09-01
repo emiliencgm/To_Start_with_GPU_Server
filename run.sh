@@ -1,8 +1,9 @@
 #!/bin/bash
 #SBATCH --job-name=example
 #SBATCH --partition=gpuq      # where our GPUs are installed.
-#SBATCH --nodes=1                   
+#SBATCH --nodes=1                
 #SBATCH --ntasks-per-node=1 
+##SBATCH --nodelist=gpu101   # This is not necessary, because the server will allocate the free node
 ##SBATCH --gres=gpu:1.        # This command seems to be refused by our server.
 #SBATCH --cpus-per-task=1
 # /!\ Caution, "multithread" in Slurm vocabulary refers to hyperthreading.
